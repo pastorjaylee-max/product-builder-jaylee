@@ -101,6 +101,9 @@ customElements.define('lotto-generator', LottoGenerator);
 
 const themeToggle = document.getElementById('themeToggle');
 const root = document.documentElement;
+const contactForm = document.getElementById('contactForm');
+const contactStatus = document.getElementById('contactStatus');
+const contactSubmit = document.getElementById('contactSubmit');
 
 function applyTheme(theme) {
   root.setAttribute('data-theme', theme);
@@ -114,3 +117,31 @@ themeToggle.addEventListener('click', () => {
 });
 
 applyTheme('light');
+
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  contactStatus.textContent = 'Sending...';
+  contactSubmit.disabled = true;
+
+  const formData = new FormData(contactForm);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+
+    contactStatus.textContent = 'Thanks! Your message has been sent.';
+    contactForm.reset();
+  } catch (error) {
+    contactStatus.textContent = 'Failed to send. Please try again.';
+  } finally {
+    contactSubmit.disabled = false;
+  }
+});

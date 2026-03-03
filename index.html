@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Lotto Number Generator</h1>
-    <lotto-generator></lotto-generator>
+    <main class="app">
+        <h1>Lotto Number Generator</h1>
+        <lotto-generator></lotto-generator>
+        <div class="theme-switcher">
+            <button id="themeToggle" type="button" aria-label="Toggle theme">Dark Mode</button>
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>

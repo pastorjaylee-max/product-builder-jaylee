@@ -40,8 +40,8 @@ class LottoGenerator extends HTMLElement {
         .ball-green { background: #50b95a; }
 
         button {
-          background: #0e2f74;
-          color: #fff;
+          background: var(--button-surface);
+          color: var(--button-text);
           border: none;
           padding: 0.8rem 1.3rem;
           font-size: 1rem;
@@ -52,15 +52,10 @@ class LottoGenerator extends HTMLElement {
         button:hover {
           filter: brightness(1.08);
         }
-
-        :host-context(:root[data-theme="dark"]) button {
-          background: #d7e5ff;
-          color: #0a1229;
-        }
       </style>
       <div class="generator">
         <div class="numbers"></div>
-        <button type="button">Generate Numbers</button>
+        <button type="button">번호 생성하기</button>
       </div>
     `;
 
@@ -107,7 +102,7 @@ const contactSubmit = document.getElementById('contactSubmit');
 
 function applyTheme(theme) {
   root.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? 'White Mode' : 'Dark Mode';
+  themeToggle.textContent = theme === 'dark' ? '화이트 모드' : '다크 모드';
 }
 
 themeToggle.addEventListener('click', () => {
@@ -120,7 +115,7 @@ applyTheme('light');
 
 contactForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-  contactStatus.textContent = 'Sending...';
+  contactStatus.textContent = '전송 중...';
   contactSubmit.disabled = true;
 
   const formData = new FormData(contactForm);
@@ -137,10 +132,10 @@ contactForm.addEventListener('submit', async (event) => {
       throw new Error('Request failed');
     }
 
-    contactStatus.textContent = 'Thanks! Your message has been sent.';
+    contactStatus.textContent = '문의가 정상적으로 접수되었습니다.';
     contactForm.reset();
   } catch (error) {
-    contactStatus.textContent = 'Failed to send. Please try again.';
+    contactStatus.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';
   } finally {
     contactSubmit.disabled = false;
   }

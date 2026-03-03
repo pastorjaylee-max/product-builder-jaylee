@@ -1,19 +1,25 @@
 :root {
-    --bg-main: #1f5fd3;
-    --bg-accent: #1143a3;
-    --text-main: #ffffff;
-    --panel-surface: #f8fbff;
-    --button-surface: #0e2f74;
-    --button-text: #ffffff;
+    --bg-main: #1d2b45;
+    --bg-accent: #395b8c;
+    --bg-highlight: #d6b36a;
+    --text-main: #f5f0e6;
+    --panel-surface: rgba(250, 245, 236, 0.96);
+    --panel-text: #2a2f3b;
+    --button-surface: #2f3f5e;
+    --button-text: #f9f5ea;
+    --input-border: #c9b792;
 }
 
 :root[data-theme="dark"] {
-    --bg-main: #0a1229;
-    --bg-accent: #16305f;
-    --text-main: #edf2ff;
-    --panel-surface: #1a2340;
-    --button-surface: #d7e5ff;
-    --button-text: #0a1229;
+    --bg-main: #0c1220;
+    --bg-accent: #22324f;
+    --bg-highlight: #8f7543;
+    --text-main: #eae3d4;
+    --panel-surface: #1b2232;
+    --panel-text: #f1e7d3;
+    --button-surface: #d6c49a;
+    --button-text: #1b2232;
+    --input-border: #6d5e43;
 }
 
 * {
@@ -26,7 +32,9 @@ body {
     min-height: 100vh;
     display: grid;
     place-items: center;
-    background: radial-gradient(circle at 20% 10%, #3a80ff 0%, var(--bg-main) 45%, var(--bg-accent) 100%);
+    background:
+        radial-gradient(circle at 18% 8%, var(--bg-highlight) 0%, transparent 20%),
+        linear-gradient(145deg, var(--bg-main) 0%, var(--bg-accent) 100%);
     color: var(--text-main);
 }
 
@@ -38,6 +46,7 @@ h1 {
     margin: 0 0 1rem;
     text-align: center;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
+    letter-spacing: 0.02em;
 }
 
 .theme-switcher {
@@ -69,12 +78,8 @@ h1 {
 
 .contact-section h2 {
     margin: 0 0 0.9rem;
-    color: #12377f;
+    color: var(--panel-text);
     font-size: 1.25rem;
-}
-
-:root[data-theme="dark"] .contact-section h2 {
-    color: #d7e5ff;
 }
 
 #contactForm {
@@ -83,28 +88,24 @@ h1 {
 }
 
 #contactForm label {
-    color: #12377f;
+    color: var(--panel-text);
     font-weight: 600;
-}
-
-:root[data-theme="dark"] #contactForm label {
-    color: #d7e5ff;
 }
 
 #contactForm input,
 #contactForm textarea {
     width: 100%;
-    border: 1px solid #b4c9f2;
+    border: 1px solid var(--input-border);
     border-radius: 0.6rem;
     padding: 0.7rem 0.8rem;
     font: inherit;
+    color: var(--panel-text);
+    background: color-mix(in srgb, var(--panel-surface) 85%, #ffffff 15%);
 }
 
 :root[data-theme="dark"] #contactForm input,
 :root[data-theme="dark"] #contactForm textarea {
-    background: #0f1a36;
-    color: #edf2ff;
-    border-color: #3b4f7d;
+    background: color-mix(in srgb, var(--panel-surface) 85%, #000000 15%);
 }
 
 #contactSubmit {
@@ -130,9 +131,5 @@ h1 {
     min-height: 1.1rem;
     margin: 0.2rem 0 0;
     font-size: 0.92rem;
-    color: #1746a0;
-}
-
-:root[data-theme="dark"] #contactStatus {
-    color: #d7e5ff;
+    color: var(--panel-text);
 }

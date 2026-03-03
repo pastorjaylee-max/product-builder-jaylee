@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ko" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>로또 번호 생성기</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="app">
-        <h1>Lotto Number Generator</h1>
+        <h1>로또 번호 생성기</h1>
         <lotto-generator></lotto-generator>
         <div class="theme-switcher">
-            <button id="themeToggle" type="button" aria-label="Toggle theme">Dark Mode</button>
+            <button id="themeToggle" type="button" aria-label="테마 전환">다크 모드</button>
         </div>
         <section class="contact-section" aria-labelledby="contactHeading">
-            <h2 id="contactHeading">Contact Us</h2>
+            <h2 id="contactHeading">고객 문의</h2>
             <form
                 id="contactForm"
                 action="https://formspree.io/f/xzdalqyo"
                 method="POST"
             >
-                <label for="name">Name</label>
+                <label for="name">이름</label>
                 <input id="name" name="name" type="text" required>
 
-                <label for="email">Email</label>
+                <label for="email">이메일</label>
                 <input id="email" name="email" type="email" required>
 
-                <label for="message">Message</label>
+                <label for="phone">전화번호</label>
+                <input id="phone" name="phone" type="tel" required>
+
+                <label for="message">문의 내용</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
 
-                <button type="submit" id="contactSubmit">Send Inquiry</button>
+                <button type="submit" id="contactSubmit">문의 보내기</button>
                 <p id="contactStatus" aria-live="polite"></p>
             </form>
         </section>
